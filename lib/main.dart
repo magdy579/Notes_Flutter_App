@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/Edit%20Notes.dart';
 import 'package:notesapp/home.dart';
 
 void main() {
@@ -17,7 +18,10 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         fontFamily: 'Poppins',
       ),
-      home: const HomeNote(),
+      home:  HomeNote(),
+routes: {
+  EditNotes.id :(context)=> EditNotes(),
+},
     );
   }
 }
