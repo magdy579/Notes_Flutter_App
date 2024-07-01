@@ -36,7 +36,7 @@ class bottomSheet extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       maximumSize: const Size(double.infinity, 46),
                       minimumSize: const Size(double.infinity, 46),
-                      backgroundColor:kcolor,
+                      backgroundColor:kColor,
                     ),
                     onPressed: (){}, child: const Text('Add',style: TextStyle(
                   color: Colors.black
