@@ -40,11 +40,10 @@ dependencies:
   hive_flutter:
 
 dev_dependencies:
-
-  flutter_test:
-    sdk: flutter
   hive_generator:
   build_runner:
+  flutter_test:
+    sdk: flutter
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
