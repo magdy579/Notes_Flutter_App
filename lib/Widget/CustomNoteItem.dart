@@ -39,7 +39,8 @@ class CustomNote extends StatelessWidget {
                   ),
                 ),
               ),
-              trailing: IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.trash,color: Colors.black,size: 20,)),
+              trailing: IconButton(onPressed: (){},
+                  icon: Icon(FontAwesomeIcons.trash,color: Colors.black,size: 20,),),
             ),
             Padding(
               padding: const EdgeInsets.only(right: 24),
