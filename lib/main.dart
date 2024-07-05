@@ -6,10 +6,8 @@ import 'package:notesapp/home.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:notesapp/model/NoteModel.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notesapp/simple_bloc_observe.dart';
 void main() async{
   await Hive.initFlutter();
-  Bloc.observer =SimpleBlocObserver();
   Hive.openBox(kNotesBox);
   Hive.registerAdapter(NoteModelAdapter());
   runApp(const MyApp());
