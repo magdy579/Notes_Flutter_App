@@ -22,6 +22,9 @@ validator: (value){
 maxLines: maxLine,
       cursorColor: kColor,
       decoration:InputDecoration(
+        errorStyle: const TextStyle(
+          color: Colors.white, // Set the error message color to white
+        ),
         hintText: hint,
         border: buildBorder(),
         enabledBorder: buildBorder(),

@@ -18,6 +18,8 @@ class _add_note_formState extends State<add_note_form> {
   final GlobalKey<FormState> formkey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;
+  bool isLoading = false;
+
   Widget build(BuildContext context) {
     return Form(
       key: formkey,
@@ -46,30 +48,43 @@ class _add_note_formState extends State<add_note_form> {
           const SizedBox(
             height: 32,
           ),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                maximumSize: const Size(double.infinity, 46),
-                minimumSize: const Size(double.infinity, 46),
-                backgroundColor: kColor,
-              ),
-              onPressed: () {
-                if (formkey.currentState!.validate()) {
-                  formkey.currentState!.save();
-                  var noteModal = NoteModel(
-                      title: title!,
-                      subTitle: subTitle!,
-                      date: DateTime.now().toString(),
-                      color: Colors.blue.value);
-                  BlocProvider.of<AddNoteCubit>(context).addNote(noteModal);
-                } else {
-                  autovalidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
-              },
-              child: const Text(
-                'Add',
-                style: TextStyle(color: Colors.black),
-              )),
+          BlocBuilder<AddNoteCubit, AddNoteState>(
+            builder: (context, state) {
+              return ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    maximumSize: const Size(double.infinity, 46),
+                    minimumSize: const Size(double.infinity, 46),
+                    backgroundColor: kColor,
+                  ),
+                  onPressed: () {
+                    isLoading = state is AddNoteLoading?  true :false;
+                    if (formkey.currentState!.validate()) {
+                      formkey.currentState!.save();
+                      var noteModal = NoteModel(
+                          title: title!,
+                          subTitle: subTitle!,
+                          date: DateTime.now().toString(),
+                          color: Colors.blue.value);
+                      BlocProvider.of<AddNoteCubit>(context).addNote(noteModal);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  child: isLoading
+                      ? const SizedBox(
+                    height: 25,
+                    width: 25,
+                    child: CircularProgressIndicator(
+                      color: Colors.black,
+                    ),
+                  )
+                      : const Text(
+                    'Add',
+                    style: TextStyle(color: Colors.black),
+                  ));
+            },
+          ),
           const SizedBox(
             height: 32,
           ),
