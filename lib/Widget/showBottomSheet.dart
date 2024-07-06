@@ -21,27 +21,24 @@ bool isLoading =false;
   Widget build(BuildContext context) {
     return Padding(
       padding:  EdgeInsets.symmetric(horizontal: 16.0),
-      child: SingleChildScrollView(
-
-          child: BlocConsumer<AddNoteCubit,AddNoteState>(
-            listener: (context, state) {
-              if(state is AddNoteLoading){
-                isLoading =true;
-              }
-              if(state is AddNoteFailure){
-                print('Failed ${state.errMessage}');
-              }
-              if(state is AddNoteSuccess){
-                Navigator.pop(context);
-              }
-            },
-              builder: (context, state) {
-                return ModalProgressHUD(
-                    inAsyncCall:isLoading,
-                    child: add_note_form());
-              },
-
-          ),
+      child: BlocConsumer<AddNoteCubit,AddNoteState>(
+        listener: (context, state) {
+          if(state is AddNoteLoading){
+            isLoading =true;
+          }
+          if(state is AddNoteFailure){
+            print('Failed ${state.errMessage}');
+          }
+          if(state is AddNoteSuccess){
+            Navigator.pop(context);
+          }
+        },
+          builder: (context, state) {
+            return ModalProgressHUD(
+                inAsyncCall:isLoading,
+                child: const SingleChildScrollView(
+                    child: add_note_form()));
+          },
 
       ),
     );
