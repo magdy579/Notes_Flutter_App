@@ -4,7 +4,7 @@ import 'package:notesapp/Widget/CustomTectField.dart';
 import 'package:notesapp/const.dart';
 import 'package:notesapp/cubits/add_note_cubit.dart';
 import 'package:notesapp/model/NoteModel.dart';
-
+import 'package:intl/intl.dart';
 class add_note_form extends StatefulWidget {
   const add_note_form({
     super.key,
@@ -60,10 +60,13 @@ class _add_note_formState extends State<add_note_form> {
                     isLoading = state is AddNoteLoading?  true :false;
                     if (formkey.currentState!.validate()) {
                       formkey.currentState!.save();
+
+                      var CurrentData =DateTime.now();
+                      var FormattedCurrentData =DateFormat('dd-mm-yyyy').format(CurrentData);
                       var noteModal = NoteModel(
                           title: title!,
                           subTitle: subTitle!,
-                          date: DateTime.now().toString(),
+                          date: FormattedCurrentData,
                           color: Colors.blue.value);
                       BlocProvider.of<AddNoteCubit>(context).addNote(noteModal);
                     } else {

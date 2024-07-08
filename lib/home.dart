@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:notesapp/Widget/CustomAppBar.dart';
+import 'package:notesapp/Widget/NotesViewBod.dart';
 import 'package:notesapp/Widget/showBottomSheet.dart';
 import 'package:notesapp/cubits/notes_cubit.dart';
 
-import 'Widget/ListView.dart';
+
 
 class HomeNote extends StatelessWidget {
   const HomeNote({super.key});
@@ -34,21 +35,10 @@ class HomeNote extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(
-              left: 16.0, right: 16.0, bottom: 8.0, top: 40),
-          child: Column(
-            children: [
-
-              customAppbar(
-                icon: const Icon(Icons.search_rounded),
-              ),
-
-              const Expanded(child: ListViewNotes()),
-            ],
-          ),
-        ),
+        body: const NotesViewBody(),
       ),
     );
   }
 }
+
+
