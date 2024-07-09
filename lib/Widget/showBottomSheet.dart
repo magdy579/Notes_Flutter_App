@@ -5,6 +5,7 @@ import 'package:notesapp/Widget/CustomTectField.dart';
 import 'package:notesapp/Widget/addNoteForm.dart';
 import 'package:notesapp/const.dart';
 import 'package:notesapp/cubits/add_note_cubit.dart';
+import 'package:notesapp/cubits/notes_cubit.dart';
 
 class bottomSheet extends StatefulWidget {
   const bottomSheet({super.key});
@@ -28,10 +29,11 @@ class _bottomSheetState extends State<bottomSheet> {
               isLoading = true;
             }
             if (state is AddNoteFailure) {
-              print('Failed ${state.errMessage}');
+
             }
             if (state is AddNoteSuccess) {
               Navigator.pop(context);
+              BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             }
           },
           builder: (context, state) {

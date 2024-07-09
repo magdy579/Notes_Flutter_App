@@ -13,30 +13,27 @@ class HomeNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-                shape: const BeveledRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16)),
-                ),
-                isScrollControlled: true,
-                context: context,
-                builder: (context) {
-                  return const bottomSheet();
-                });
-          },
-          child: const Icon(
-            Icons.add,
-            color: Colors.black,
-          ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+              shape: const BeveledRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(16),
+                    topRight: Radius.circular(16)),
+              ),
+              isScrollControlled: true,
+              context: context,
+              builder: (context) {
+                return const bottomSheet();
+              });
+        },
+        child: const Icon(
+          Icons.add,
+          color: Colors.black,
         ),
-        body: const NotesViewBody(),
       ),
+      body: const NotesViewBody(),
     );
   }
 }
