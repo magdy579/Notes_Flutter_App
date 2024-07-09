@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:notesapp/Widget/CustomSearch.dart';
 
 class customAppbar extends StatelessWidget {
-   customAppbar({super.key,required this.icon});
-  Icon? icon ;
+   customAppbar({super.key,required this.icon,required this.onTap});
+  IconData? icon ;
+  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,8 +22,12 @@ class customAppbar extends StatelessWidget {
                 color: Colors.white.withOpacity(.05),
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: Center(
-                child: icon,
+              child: IconButton(
+
+                onPressed: onTap,
+
+                  icon: Icon(icon,size: 28,),
+
               ),
             )
 

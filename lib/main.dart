@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Poppins',
         ),
         home: HomeNote(),
-        routes: {
-          EditNotes.id: (context) => const EditNotes(),
-        },
+        // routes: {
+        //   EditNotes.id: (context) => const EditNotes(),
+        // },
       ),
     );
   }

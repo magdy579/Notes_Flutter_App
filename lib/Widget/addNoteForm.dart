@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/Widget/CustomTectField.dart';
+import 'package:notesapp/Widget/colors_list_view.dart';
 import 'package:notesapp/const.dart';
 import 'package:notesapp/cubits/add_note_cubit.dart';
 import 'package:notesapp/model/NoteModel.dart';
@@ -45,6 +46,11 @@ class _add_note_formState extends State<add_note_form> {
             hint: 'Enter Note',
             maxLine: 5,
           ),
+
+          const SizedBox(
+            height: 32,
+          ),
+          const ColorList(),
           const SizedBox(
             height: 32,
           ),
@@ -96,3 +102,6 @@ class _add_note_formState extends State<add_note_form> {
     );
   }
 }
+
+
+
